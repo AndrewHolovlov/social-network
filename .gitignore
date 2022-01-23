@@ -1,0 +1,10 @@
+.idea
+.DS_Store
+
+venv/
+.env
+
+*.db
+db.sqlite3
+
+static/
