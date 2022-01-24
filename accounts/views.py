@@ -1,10 +1,11 @@
 from rest_framework_simplejwt.views import TokenObtainPairView
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAdminUser
 from rest_framework.views import APIView
+from rest_framework import generics
 from rest_framework import status
 from rest_framework.response import Response
 
-from .serializers import MyTokenObtainPairSerializer, SignUpSerializer
+from .serializers import MyTokenObtainPairSerializer, SignUpSerializer, UserActivitySerializer
 from .models import User
 
 
@@ -26,3 +27,8 @@ class SignUpView(APIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+class UserActivityView(generics.ListAPIView):
+    queryset = User.objects.all()
+    permission_classes = (IsAdminUser,)
+    serializer_class = UserActivitySerializer
