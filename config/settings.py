@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
 
     'accounts',
-    'posts'
+    'posts',
 ]
 
 MIDDLEWARE = [
@@ -40,6 +40,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'config.middleware.LastActivityMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -77,6 +78,8 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
     'DATETIME_FORMAT': "%Y-%m-%d %H:%M:%S"
 }
+
+LAST_ACTIVITY_INTERVAL = 600
 
 SIMPLE_JWT = {
     'ALGORITHM': 'HS256',

@@ -1,6 +1,9 @@
+from datetime import datetime
+
+from rest_framework_simplejwt.tokens import RefreshToken
+
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
-from rest_framework_simplejwt.tokens import RefreshToken
 
 
 class UserManager(BaseUserManager):
@@ -38,6 +41,7 @@ class UserManager(BaseUserManager):
 class User(AbstractUser):
     username = None
     email = models.EmailField('email', unique=True)
+    last_activity = models.DateTimeField(default=datetime.now)
 
     objects = UserManager()
 
