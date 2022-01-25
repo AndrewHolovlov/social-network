@@ -10,7 +10,10 @@ source venv/bin/activate
 ```
 
 Then copy env.example to .env file and set up environment variables.
-Export CONFIG_NAME variable. For local setup it should be set to base.
+Export CONFIG_NAME variable. For local setup it should be set to base:
+```shell
+export CONFIG_NAME='base'
+```
 
 To make and apply migrations run the following command:
 ```shell
