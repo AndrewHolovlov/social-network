@@ -1,6 +1,7 @@
 ## General info
 RESTful API made with Django Rest Framework
 
+**API Docs:** https://social-network-aholovlov.herokuapp.com/docs/swagger
 
 ### Local Setup
 Configure your environment.
