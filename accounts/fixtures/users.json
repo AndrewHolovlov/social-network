@@ -1,0 +1,22 @@
+[
+  {
+    "model": "accounts.user",
+    "fields": {
+      "email": "admin@test.com",
+      "password": "1234qwer",
+      "first_name": "Admin",
+      "last_name": "User",
+      "is_staff": true,
+      "is_superuser": true
+    }
+  },
+  {
+    "model": "accounts.user",
+    "fields": {
+      "email": "user1@test.com",
+      "password": "1234qwer",
+      "first_name": "Test",
+      "last_name": "User 1"
+    }
+  }
+]
