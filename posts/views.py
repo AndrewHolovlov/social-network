@@ -18,12 +18,19 @@ class PostView(generics.ListCreateAPIView):
     serializer_class = PostSerializer
     permission_classes = (IsAuthenticated,)
 
-    def list(self, request, *args, **kwargs):
+    def list(self, request, post_id=None, *args, **kwargs):
         is_liked = Like.objects.filter(
             post=OuterRef('pk'),
             user=request.user.id)
-        queryset = self.queryset.annotate(number_of_likes=Count('likes'), is_liked=Exists(is_liked))
-        return Response(self.serializer_class(queryset, many=True).data)
+        if post_id:
+            post = self.queryset.filter(id=post_id).annotate(number_of_likes=Count('likes'), is_liked=Exists(is_liked))
+            if post:
+                return Response(self.serializer_class(post[0]).data, status=status.HTTP_200_OK)
+            else:
+                return Response('Post not found', status=status.HTTP_404_NOT_FOUND)
+        else:
+            queryset = self.queryset.annotate(number_of_likes=Count('likes'), is_liked=Exists(is_liked))
+            return Response(self.serializer_class(queryset, many=True).data)
 
     def get_serializer_context(self):
         context = super().get_serializer_context()
@@ -39,7 +46,7 @@ class PostLikeView(APIView):
     @swagger_auto_schema(
         operation_id='Like a post by id',
         responses={
-            200: LikeSerializer,
+            201: "",
             404: 'Post does not exist',
             400: 'You already liked this post'
         }
@@ -76,6 +83,7 @@ class PostLikeView(APIView):
 
 
 class AnalyticsLikeView(APIView):
+    permission_classes = (IsAuthenticated,)
 
     @swagger_auto_schema(
         operation_id='likes_analytics',
