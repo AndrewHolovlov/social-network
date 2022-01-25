@@ -18,7 +18,7 @@ class PostSerializer(serializers.ModelSerializer):
         return attrs
 
 
-class LikeSerializers(serializers.ModelSerializer):
+class LikeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Like
         fields = ['post', 'user', 'created_at']

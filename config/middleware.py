@@ -18,7 +18,7 @@ class LastActivityMiddleware:
             try:
                 request.user = authentication.JWTAuthentication().authenticate(request)[0]  # Manually authenticate the token
             except Exception as e:
-                print(e)
+                pass  # do nothing when accessing docs or admin pages
 
         if request.user.is_authenticated:
             last_activity = request.session.get('last-activity', None)
