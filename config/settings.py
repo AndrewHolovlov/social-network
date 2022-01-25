@@ -98,6 +98,16 @@ SIMPLE_JWT = {
     'USER_ID_CLAIM': 'user_id',
 }
 
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    }
+}
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
