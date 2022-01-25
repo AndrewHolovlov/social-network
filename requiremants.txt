@@ -2,3 +2,4 @@ django
 django-rest-framework
 djangorestframework-simplejwt
 python-dotenv
+drf-yasg
