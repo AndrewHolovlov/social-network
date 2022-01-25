@@ -44,7 +44,8 @@ class PostLikeView(APIView):
     permission_classes = (IsAuthenticated,)
 
     @swagger_auto_schema(
-        operation_id='Like a post by id',
+        operation_id='like_post',
+        operation_description='Like a post by id',
         responses={
             201: "",
             404: 'Post does not exist',
@@ -65,7 +66,8 @@ class PostLikeView(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     @swagger_auto_schema(
-        operation_id='Unlike a post by id',
+        operation_id='unlike_post',
+        operation_description='Unlike a post by id',
         responses={
             204: "",
             404: 'Post does not exist',
@@ -106,9 +108,7 @@ class AnalyticsLikeView(APIView):
         else:
             date_to = request.query_params.get('date_to', datetime.datetime.now())
             if date_from > date_to:
-                return Response(
-                    "Invalid query params, date_to must be greater than date_from",
-                    status=status.HTTP_400_BAD_REQUEST)
+                raise exceptions.ValidationError("Invalid query params, date_to must be greater than date_from")
             number_of_likes = Like.objects.filter(created_at__range=(date_from, date_to)).count()
         return Response({'number_of_likes': number_of_likes}, status=status.HTTP_200_OK)
 

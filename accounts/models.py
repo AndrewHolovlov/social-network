@@ -51,7 +51,7 @@ class User(AbstractUser):
         swappable = 'AUTH_USER_MODEL'
 
     def __str__(self):
-        return '%s %s' % (self.first_name, self.last_name)
+        return self.get_full_name() or self.email
 
     @classmethod
     def get_tokens_for_user(cls, user):
