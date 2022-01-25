@@ -1,8 +1,5 @@
 django
-django-heroku
 django-rest-framework
 djangorestframework-simplejwt
-drf-yasg
-gunicorn
-psycopg2-binary
 python-dotenv
+drf-yasg
