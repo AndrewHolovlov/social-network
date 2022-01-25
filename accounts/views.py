@@ -50,7 +50,7 @@ class AllUsersActivityView(generics.ListAPIView):
 
     @swagger_auto_schema(
         operation_id="user_activity",
-        operation_description="Get last login and last activity dates for each user",
+        operation_description="Get last login and last activity dates for each user or one user",
         manual_parameters=[
             openapi.Parameter(name='user_id', in_=openapi.IN_QUERY, type=openapi.TYPE_INTEGER, required=False),
         ],

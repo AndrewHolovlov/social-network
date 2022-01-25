@@ -1,0 +1,20 @@
+[
+  {
+    "model": "posts.post",
+    "fields": {
+      "title": "Lists in Python",
+      "content": "Python Lists\nIn short, a list is a collection of arbitrary objects, somewhat akin to an array in many other programming languages but more flexible. Lists are defined in Python by enclosing a comma-separated sequence of objects in square brackets ([]), as shown below:",
+      "created_at": "2022-01-25 20:20:20",
+      "user": 1
+    }
+  },
+  {
+    "model": "posts.post",
+    "fields": {
+      "title": "Tuples in Python",
+      "content": "Python Lists\nTuples are made of several items, just like a list, but they cannot be modified in any way. They are widely used internally in many of the systems we depend on, like databases. Tuples hold data in the order we supply it, and we can access the elements inside a tuple with an index.",
+      "created_at": "2022-01-25 20:20:20",
+      "user": 2
+    }
+  }
+]
