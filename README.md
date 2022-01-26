@@ -3,6 +3,12 @@ RESTful API made with Django Rest Framework
 
 **API Docs:** https://social-network-aholovlov.herokuapp.com/docs/swagger
 
+**Site administration**
+* url: https://social-network-aholovlov.herokuapp.com/admin/
+* email: admin@test.com
+* password: admin
+
+
 ### Local Setup
 Configure your environment.
 Activate virtualenv: (venv - your virtual environment name).
