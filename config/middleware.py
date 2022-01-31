@@ -28,7 +28,7 @@ class LastActivityMiddleware:
                 User.objects.filter(id=request.user.id).update(
                     last_activity=timezone.now())
 
-            request.session['last-activity'] = datetime.now().strftime("%Y%m%d %H:%M:%S")
+                request.session['last-activity'] = datetime.now().strftime("%Y%m%d %H:%M:%S")
 
         response = self.get_response(request)
         return response
